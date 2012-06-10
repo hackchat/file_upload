@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.5'
-gem 'carrierwave'
-gem 'fog'
+gem 'aws-s3'
 
+gem 'slim'
+gem 'slim-rails'
+gem 'puma'
+gem 'sqlite3'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

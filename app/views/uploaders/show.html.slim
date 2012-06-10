@@ -1,0 +1,8 @@
+h1 Upload the package!
+
+form#file_upload*{multipart: true, remote: true}
+  = file_field_tag :file
+  a#upload_file
+    | Upload File
+
+progress
