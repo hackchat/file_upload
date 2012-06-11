@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.5'
 gem 'aws-s3'
+gem 'mysql2'
 
 gem 'slim'
 gem 'slim-rails'
