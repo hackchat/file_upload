@@ -4,5 +4,5 @@ class FileUploader < AWS::S3::S3Object
       access_key_id: AWS_KEY,
       secret_access_key: AWS_SECRET)
 
-  set_current_bucket_to 'hackchat'
+  set_current_bucket_to CURRENT_BUCKET
 end

@@ -4,8 +4,8 @@ class UploadersController < ApplicationController
   end
 
   def create
-    file_name = Digest::SHA256.hexdigest "#{Time.now}"
-    FileUploader.store(file_name, @tempfile, 'hackchat')
-    render json: { url: "/hackchat/#{file_name}" }
+    file_name = @original_filename.basename
+    FileUploader.store(file_name, @tempfile, CURRENT_BUCKET)
+    render json: { url: "/#{CURRENT_BUCKET}/#{file_name}" }
   end
 end
