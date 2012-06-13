@@ -4,8 +4,9 @@ class UploadersController < ApplicationController
   end
 
   def create
-    file_name = @original_filename.basename
-    FileUploader.store(file_name, @tempfile, CURRENT_BUCKET)
+    file = params[:file]
+    file_name = file.original_filename
+    FileUploader.store(file_name, file, CURRENT_BUCKET)
     render json: { url: "/#{CURRENT_BUCKET}/#{file_name}" }
   end
 end
