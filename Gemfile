@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.5'
 gem 'aws-s3'
+gem 'mysql2'
 
 gem 'slim'
 gem 'slim-rails'
 gem 'puma'
-gem 'sqlite3'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -21,10 +21,10 @@ gem 'jquery-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
