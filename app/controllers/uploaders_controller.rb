@@ -1,26 +1,32 @@
 class UploadersController < ApplicationController
-  def show
 
+  def show
+    @room_id = params[:room_id]
+    @user_token = params[:user_token]
   end
 
   def create
-    file = params[:file]
-    file_name = file.original_filename
-    upload = Upload.new(params[:data])
-    upload.upload_to_s3(file_name, file).save
-    render json: { url: upload.url }
+    if params[:file]
+      file = params[:file]
+      upload = Upload.new(params[:data])
+      upload.upload_to_s3(file.original_filename, file)
+      upload.save
+      render json: { status: :created, url: upload.url }
+    else
+      head 422
+    end
   end
 
   def options
     set_access_control_headers
+    Rails.logger.info(response.headers.inspect)
     head :ok
   end 
 
   def set_access_control_headers
-    headers['Access-Control-Allow-Origin'] = '*, http://hackchat.dev'
-    headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
-    headers['Access-Control-Max-Age'] = '1000'
-    headers['Access-Control-Allow-Headers'] = '*, X-Requested-With, X-Prototype-Version, X-CSRF-Token'
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'POST'
+    headers['Access-Control-Allow-Headers'] = 'X-CSRF-Token, Content-Type'
   end
 
 end

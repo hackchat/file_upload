@@ -59,12 +59,12 @@ module FileUpload
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.middleware.use Rack::Cors do
-      allow do
-        origins 'http://hackchat.dev', 'http://hackchat.in'
-        resource '/uploader', :headers => 'x-domain-token',
-        :methods => [:get, :post, :put, :delete]
-      end
-    end
+    # config.middleware.use Rack::Cors do
+    #   allow do
+    #     origins 'http://hackchat.dev', 'http://hackchat.in'
+    #     resource '/uploader', :headers => 'x-domain-token',
+    #     :methods => [:get, :post, :put, :delete, :options]
+    #   end
+    # end
   end
 end
